@@ -1,0 +1,14 @@
+name : "My first workflow"
+
+on: push
+
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: "Checkout main branch"
+          uses: actions/checkout@v4
+        - name: "Find the hostname"
+          run: pwd
+        - name: "List files"
+          run: ls -lrt
