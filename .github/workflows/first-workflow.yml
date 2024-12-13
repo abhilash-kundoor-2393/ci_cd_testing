@@ -6,9 +6,13 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
         steps:
-        - name: "Checkout main branch"
-          uses: actions/checkout@v4
-        - name: "Find the hostname"
-          run: pwd
-        - name: "List files"
-          run: ls -lrt
+        - name: "Just say hello"
+          run: echo "Branch is ${{ github.ref_name }}"
+    second_job:
+        if: github.ref_name == 'main'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                commands: ['pwd', 'uptime', 'df']
+        steps:
+        - run: echo "${{ matrix.commands }}"
