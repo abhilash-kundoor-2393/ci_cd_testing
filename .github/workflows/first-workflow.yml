@@ -9,10 +9,11 @@ jobs:
         - name: "Just say hello"
           run: echo "Branch is ${{ github.ref_name }}"
     second_job:
+        needs: first_job
         if: github.ref_name == 'main'
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 commands: ['pwd', 'uptime', 'df']
         steps:
-        - run: echo "${{ matrix.commands }}"
+        - run: ${{ matrix.commands }}
