@@ -15,6 +15,6 @@ jobs:
     second_job:
         runs-on: ubuntu-latest
         env:
-          GITHUB_CONTEXT: github
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         steps:
         - run: echo "$GITHUB_CONTEXT"
