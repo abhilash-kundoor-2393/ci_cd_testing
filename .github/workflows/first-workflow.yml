@@ -17,4 +17,4 @@ jobs:
         env:
           GITHUB_CONTEXT: github
         steps:
-          run: echo "$GITHUB_CONTEXT"
+        - run: echo "$GITHUB_CONTEXT"
