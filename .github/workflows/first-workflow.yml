@@ -3,12 +3,18 @@ name : "My first workflow"
 on: push
 
 jobs:
-    first_job:
+    # first_job:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #     - name: "Checkout main branch"
+    #       uses: actions/checkout@v4
+    #     - name: "Find the hostname"
+    #       run: pwd
+    #     - name: "List files"
+    #       run: ls -lrt
+    second_job:
         runs-on: ubuntu-latest
+        env:
+          GITHUB_CONTEXT: github
         steps:
-        - name: "Checkout main branch"
-          uses: actions/checkout@v4
-        - name: "Find the hostname"
-          run: pwd
-        - name: "List files"
-          run: ls -lrt
+          run: echo "$GITHUB_CONTEXT"
