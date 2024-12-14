@@ -26,7 +26,7 @@ jobs:
         steps:
         - run: |
             echo -e "Owner detail\n"
-            echo ${{ env.OWNER_NAME }}
+            echo "${{ env.OWNER_NAME }}"
             echo -e "Git Details\n"
-            echo ${{ toJson(github)}}
+            echo "${{ toJson(github)}}"
             
