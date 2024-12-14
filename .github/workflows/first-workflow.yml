@@ -13,7 +13,20 @@ jobs:
         if: github.ref_name == 'main'
         runs-on: ubuntu-latest
         strategy:
+            max-parallel: 1
             matrix:
                 commands: ['pwd', 'uptime', 'df']
         steps:
         - run: ${{ matrix.commands }}
+    third_job:
+        runs-on: ubuntu-latest
+        needs: second_job
+        env:
+            OWNER_NAME: "Abhilash Kundoor"
+        steps:
+        - run: |
+            echo -e "Owner detail\n"
+            echo ${{ env.OWNER_NAME }}
+            echo -e "Git Details\n"
+            echo ${{ toJson(github)}}
+            
